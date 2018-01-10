@@ -38,7 +38,7 @@ type WebRTCPeer struct {
 // TODO: this JSON schema is temp in lieu of first protocol spec lockdown
 type SDPAndIce struct {
 	Description webrtc.SessionDescription `json:"description"`
-	Candidates  []webrtc.IceCandidate
+	Candidates  []*webrtc.IceCandidate
 }
 
 type Offer struct {
@@ -61,7 +61,7 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 	// Prior to step 1:
 	// configure go-webrtc lib, create a new PeerConnection and add
 	// event listeners for Ice, signaling and connection events.
-	webrtc.SetLoggingVerbosity(3)
+	webrtc.SetLoggingVerbosity(1)
 	config := webrtc.NewConfiguration(
 		webrtc.OptionIceServer(stunServer),
 	)
@@ -72,7 +72,7 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 		return nil, err
 	}
 
-	cands := make([]*webrtc.IceCandidate, 2)
+	cands := []*webrtc.IceCandidate{}
 	candChan := make(chan webrtc.IceCandidate, 2)
 
 	// ICE Events
@@ -131,11 +131,7 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 
 	// Step 3: transmit WebRTC offer and ICE candidates over signaling channel;
 	//         HTTP(S) for now
-	var candsCopy []webrtc.IceCandidate
-	for _, c := range cands {
-		candsCopy = append(candsCopy, *c)
-	}
-	response := Offer{SDPAndIce{*offerSDP, candsCopy}}
+	response := Offer{SDPAndIce{*offerSDP, cands}}
 	b, err := json.Marshal(response)
 	if err != nil {
 		return nil, err
@@ -176,10 +172,10 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 
 	// Add candidates from peer
 	for _, c := range sdpAndIce.Candidates {
-		if c.Candidate == "" {
-			continue // TODO: verify
+		if c == nil || c.Candidate == "" {
+			continue // TODO: verify if correct behaviour
 		}
-		err = pc.AddIceCandidate(c)
+		err = pc.AddIceCandidate(*c)
 		if err != nil {
 			log.Error("AddIceCandidate", "err", err)
 			return nil, err
@@ -194,6 +190,135 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 	}
 
 	return &peer, nil
+}
+
+func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, error) {
+	offer := new(Offer)
+	err := json.Unmarshal(b, offer)
+	if err != nil {
+		log.Error("Parsing WebRTC Offer", "err", err)
+		return nil, nil, err
+	}
+	log.Debug("offer", "struct", offer)
+	sdpAndIce := offer.Inner
+	//log.Debug("WebRTC Offer", "type", sdpAndIce.Description.Type, "sdp", sdpAndIce.Description.Sdp)
+	for i, c := range sdpAndIce.Candidates {
+		if c != nil {
+			log.Debug("RECEIVED ICE", "index", i, "candidate", c.Candidate, "sdpMid", c.SdpMid, "SdpMLineIndex", c.SdpMLineIndex)
+		} else {
+			log.Warn("Received nil ICE Candidate")
+		}
+	}
+
+	// At this point we have what looks like a valid WebRTC offer SDP,
+	// with steps 1,2,3 done by the caller and we execute step 4:
+	webrtc.SetLoggingVerbosity(3)
+	config := webrtc.NewConfiguration(
+		webrtc.OptionIceServer("stun:stun.l.google.com:19302"),
+	)
+	pc, err := webrtc.NewPeerConnection(config)
+	if err != nil {
+		log.Error("webrtc.NewPeerConnection", "err", err)
+		return nil, nil, err
+	}
+
+	// Listen to our own candidates
+	cands := make([]*webrtc.IceCandidate, 2)
+	candChan := make(chan webrtc.IceCandidate, 2)
+	// ICE Events
+	pc.OnIceCandidate = func(c webrtc.IceCandidate) {
+		log.Debug("OnIceCandidate: ", "cand", c)
+		candChan <- c
+	}
+	pc.OnIceCandidateError = func() {
+		log.Debug("OnIceCandidateError: ")
+	}
+	pc.OnIceConnectionStateChange = func(webrtc.IceConnectionState) {
+		log.Debug("OnIceConnectionStateChange: ")
+	}
+	pc.OnIceGatheringStateChange = func(webrtc.IceGatheringState) {
+		log.Debug("OnIceGatheringStateChange: ")
+	}
+	pc.OnIceComplete = func() {
+		log.Debug("OnIceComplete: ")
+		close(candChan)
+	}
+	// Other PeerConnection Events
+	pc.OnSignalingStateChange = func(s webrtc.SignalingState) {
+		log.Debug("OnSignalingStateChange: ", "state", s)
+	}
+	pc.OnConnectionStateChange = func(webrtc.PeerConnectionState) {
+		log.Debug("OnConnectionStateChange: ")
+	}
+
+	var dc *webrtc.DataChannel
+	pc.OnDataChannel = func(d *webrtc.DataChannel) {
+		log.Debug("OnDataChannel: ")
+		d.OnMessage = func(msg []byte) {
+			log.Debug("temp dc.OnMessage", "msg", msg)
+		}
+		dcReady <- d
+	}
+
+	err = pc.SetRemoteDescription(&sdpAndIce.Description)
+	if err != nil {
+		log.Error("SetRemoteDescription", "err", err)
+		return nil, nil, err
+	}
+
+	// Add candidates from peer
+	for _, c := range sdpAndIce.Candidates {
+		if c == nil || c.Candidate == "" {
+			continue // TODO: verify if should we skip here
+		}
+		log.Debug("ICE", "adding", c, "c.candidate", c.Candidate)
+		err = pc.AddIceCandidate(*c)
+		if err != nil {
+			log.Error("AddIceCandidate", "err", err)
+			return nil, nil, err
+		}
+	}
+
+	// Step 5: TODO: anything else we need locally, e.g. resource
+	//               allocations (out of scope of the webrtc spec)
+
+	// Step 6:
+	answerSDP, err := pc.CreateAnswer()
+	if err != nil {
+		log.Error("CreateAnswer", "err", err)
+		return nil, nil, err
+	}
+
+	// Step 7:
+	err = pc.SetLocalDescription(answerSDP)
+	if err != nil {
+		log.Error("SetLocalDescription", "err", err)
+		return nil, nil, err
+	}
+
+	// Block on ice candidates
+	for cand := range candChan {
+		cands = append(cands, &cand)
+	}
+
+	// Step 8:
+	// TODO: for now we send back Orchid specific fields alongside
+	//       the answer SDP. For live network everything must be encrypted
+	resp := Answer{SDPAndIce{*answerSDP, cands}}
+	respBuf, err := json.Marshal(resp)
+	if err != nil {
+		return nil, nil, err
+	}
+	//log.Info("response", "bytes", string(respBuf))
+
+	peer := WebRTCPeer{
+		nil,
+		pc,
+		[]*webrtc.DataChannel{dc},
+		cands,
+	}
+
+	return respBuf, &peer, nil
 }
 
 /* DCReadWriteCloser wraps webrtc.DataChannel with a mutex for
@@ -215,9 +340,12 @@ func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 		make([]byte, transferBufSize),
 		false,
 	}
+
 	dc.OnMessage = func(msg []byte) {
+		log.Debug("DCReadWriteCloser dc.OnMessage 0")
 		d.Mutex.Lock()
 		d.ReadBuf = append(d.ReadBuf, msg...)
+		log.Debug("DCReadWriteCloser dc.OnMessage 1", "readBuf", d.ReadBuf)
 		d.Mutex.Unlock()
 	}
 	dc.OnClose = func() {
@@ -229,6 +357,7 @@ func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 }
 
 func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
+	log.Debug("DCReadWriteCloser Read 0")
 	defer d.Mutex.Unlock()
 	d.Mutex.Lock()
 
@@ -236,11 +365,12 @@ func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
 		return 0, io.EOF
 	}
 	n = copy(p, d.ReadBuf)
-
+	log.Debug("DCReadWriteCloser Read", "p", p)
 	return n, nil
 }
 
 func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
+	log.Debug("DCReadWriteCloser Write 0", "p", p)
 	defer d.Mutex.Unlock()
 	d.Mutex.Lock()
 	// copy to new slice since webrtc.DataChannel accesses the
@@ -249,10 +379,12 @@ func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
 	c := make([]byte, len(p))
 	copy(c, p)
 	d.DC.Send(c)
+	log.Debug("DCReadWriteCloser Write 1", "p", p)
 	return len(p), nil
 }
 
 func (d *DCReadWriteCloser) Close() (err error) {
+	log.Debug("DCReadWriteCloser Close")
 	defer d.Mutex.Unlock()
 	d.Mutex.Lock()
 
