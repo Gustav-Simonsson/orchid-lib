@@ -31,7 +31,14 @@ func simpleSource() error {
 		return err
 	}
 
-	dcReadWriter := p2p.NewDCReadWriteCloser(wPeer.DCs[0])
+	// test a 2nd DataChannel
+	dc1, err := wPeer.PC.CreateDataChannel("1")
+	if err != nil {
+		log.Error("CreateDataChannel (2nd)", "err", err)
+		return err
+	}
+
+	dcReadWriter := p2p.NewDCReadWriteCloser(dc1)
 
 	i := 0
 	for {
@@ -69,11 +76,17 @@ func simpleExit() error {
 			exit.Source = peer
 
 			go func() {
-				dc, ok := <-dcReady
-				if !ok {
+				_, ok0 := <-dcReady
+				if !ok0 {
+					log.Error("dc ready chan not ok")
+					return
+				}
+
+				dc1, ok1 := <-dcReady
+				if !ok1 {
 					log.Error("dc ready chan not ok")
 				} else {
-					dcReadWriter = p2p.NewDCReadWriteCloser(dc)
+					dcReadWriter = p2p.NewDCReadWriteCloser(dc1)
 					for {
 						buf := make([]byte, 2)
 						_, err := dcReadWriter.Read(buf)
