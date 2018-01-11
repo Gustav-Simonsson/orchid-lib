@@ -81,6 +81,7 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 		candChan <- c
 	}
 	pc.OnIceCandidateError = func() {
+		// TODO: disconnect peer, this fires if the peer simply shuts down
 		log.Debug("OnIceCandidateError: ")
 	}
 	pc.OnIceConnectionStateChange = func(webrtc.IceConnectionState) {
@@ -322,73 +323,71 @@ func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, e
 }
 
 /* DCReadWriteCloser wraps webrtc.DataChannel with a mutex for
-   concurrent access and a read buffer and closed flag to implement
+   concurrent access and a byte buffer and closed flag to implement
    the io.ReadWriterCloser interface as a more generic way of interfacing
    with the TCPProxy
 */
 type DCReadWriteCloser struct {
-	Mutex   sync.Mutex
-	DC      *webrtc.DataChannel
-	ReadBuf []byte
-	Closed  bool
+	mutex  sync.Mutex
+	dc     *webrtc.DataChannel
+	buf    *bytes.Buffer
+	closed bool
 }
 
 func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 	d := &DCReadWriteCloser{
 		sync.Mutex{},
 		dc,
-		make([]byte, transferBufSize),
+		bytes.NewBuffer(make([]byte, 0, transferBufSize)),
 		false,
 	}
 
 	dc.OnMessage = func(msg []byte) {
-		log.Debug("DCReadWriteCloser dc.OnMessage 0")
-		d.Mutex.Lock()
-		d.ReadBuf = append(d.ReadBuf, msg...)
-		log.Debug("DCReadWriteCloser dc.OnMessage 1", "readBuf", d.ReadBuf)
-		d.Mutex.Unlock()
+		d.mutex.Lock()
+		_, err := d.buf.Write(msg)
+		if err != nil {
+			log.Error("dc.OnMessage buf.Write", "err", err)
+		}
+		log.Debug("dc.OnMessage ", "msg", msg)
+		d.mutex.Unlock()
 	}
 	dc.OnClose = func() {
-		d.Mutex.Lock()
-		d.Closed = true
-		d.Mutex.Unlock()
+		d.mutex.Lock()
+		d.closed = true
+		d.mutex.Unlock()
 	}
 	return d
 }
 
 func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
-	log.Debug("DCReadWriteCloser Read 0")
-	defer d.Mutex.Unlock()
-	d.Mutex.Lock()
-
-	if d.Closed {
+	defer d.mutex.Unlock()
+	d.mutex.Lock()
+	//log.Debug("DCReadWriteCloser Read", "p", p)
+	if d.closed {
 		return 0, io.EOF
 	}
-	n = copy(p, d.ReadBuf)
-	log.Debug("DCReadWriteCloser Read", "p", p)
-	return n, nil
+	return d.buf.Read(p)
 }
 
 func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
-	log.Debug("DCReadWriteCloser Write 0", "p", p)
-	defer d.Mutex.Unlock()
-	d.Mutex.Lock()
+	log.Debug("DCReadWriteCloser Write", "p", p)
+	defer d.mutex.Unlock()
+	d.mutex.Lock()
 	// copy to new slice since webrtc.DataChannel accesses the
 	// passed byte slice using cgo & unsafe pointers and Writer interface
 	// implementations must not retain p
 	c := make([]byte, len(p))
 	copy(c, p)
-	d.DC.Send(c)
-	log.Debug("DCReadWriteCloser Write 1", "p", p)
+	d.dc.Send(c)
 	return len(p), nil
 }
 
 func (d *DCReadWriteCloser) Close() (err error) {
 	log.Debug("DCReadWriteCloser Close")
-	defer d.Mutex.Unlock()
-	d.Mutex.Lock()
+	defer d.mutex.Unlock()
+	d.mutex.Lock()
 
-	d.Closed = true
-	err = d.DC.Close()
+	d.closed = true
+	err = d.dc.Close()
 	return
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"io"
 	"net/url"
 	"sync"
 	"time"
@@ -32,8 +33,10 @@ func simpleSource() error {
 
 	dcReadWriter := p2p.NewDCReadWriteCloser(wPeer.DCs[0])
 
+	i := 0
 	for {
-		_, err := dcReadWriter.Write([]byte("foo"))
+		i++
+		_, err := dcReadWriter.Write([]byte{42, byte(i)})
 		if err != nil {
 			log.Error("source: test write", "err", err)
 		}
@@ -72,12 +75,17 @@ func simpleExit() error {
 				} else {
 					dcReadWriter = p2p.NewDCReadWriteCloser(dc)
 					for {
-						buf := make([]byte, 1)
+						buf := make([]byte, 2)
 						_, err := dcReadWriter.Read(buf)
+						log.Debug("dcReadWriter.Read", "buf", buf)
 						if err != nil {
-							log.Error("exit: test read:", "err", err)
+							if err == io.EOF {
+								log.Info("exit: test read: EOF")
+							} else {
+								log.Error("exit: test read:", "err", err)
+							}
 						}
-						time.Sleep(time.Millisecond * 3000)
+						time.Sleep(time.Millisecond * 6000)
 					}
 				}
 

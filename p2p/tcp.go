@@ -82,8 +82,8 @@ func ServeConn(src net.Conn, dst io.ReadWriteCloser) {
 	srcDone := make(chan struct{}, 1)
 	dstDone := make(chan struct{}, 1)
 
-	buf0 := make([]byte, transferBufSize)
-	buf1 := make([]byte, transferBufSize)
+	buf0 := make([]byte, 0, transferBufSize)
+	buf1 := make([]byte, 0, transferBufSize)
 	go copyBuffer(src, dst, buf0, srcDone)
 	go copyBuffer(dst, src, buf1, dstDone)
 
