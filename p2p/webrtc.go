@@ -8,10 +8,11 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strconv"
 	"sync"
 
+	webrtc "github.com/Gustav-Simonsson/go-webrtc"
 	"github.com/ethereum/go-ethereum/log"
-	webrtc "github.com/keroserene/go-webrtc"
 )
 
 /* WebRTC 1.0 Protocol
@@ -29,9 +30,11 @@ const (
 )
 
 type WebRTCPeer struct {
+	Mutex    sync.Mutex
 	RefURL   *url.URL
 	PC       *webrtc.PeerConnection
 	DCs      []*webrtc.DataChannel
+	DCLabel  uint64
 	IceCands []*webrtc.IceCandidate
 }
 
@@ -61,7 +64,7 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 	// Prior to step 1:
 	// configure go-webrtc lib, create a new PeerConnection and add
 	// event listeners for Ice, signaling and connection events.
-	webrtc.SetLoggingVerbosity(1)
+	webrtc.SetLoggingVerbosity(4) // 1-4: INFO, WARN, ERROR, TRACE
 	config := webrtc.NewConfiguration(
 		webrtc.OptionIceServer(stunServer),
 	)
@@ -82,13 +85,13 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 	}
 	pc.OnIceCandidateError = func() {
 		// TODO: disconnect peer, this fires if the peer simply shuts down
-		log.Debug("OnIceCandidateError: ")
+		log.Debug("OnIceCandidateError")
 	}
-	pc.OnIceConnectionStateChange = func(webrtc.IceConnectionState) {
-		log.Debug("OnIceConnectionStateChange: ")
+	pc.OnIceConnectionStateChange = func(s webrtc.IceConnectionState) {
+		log.Debug("OnIceConnectionStateChange ", "state", s)
 	}
-	pc.OnIceGatheringStateChange = func(webrtc.IceGatheringState) {
-		log.Debug("OnIceGatheringStateChange: ")
+	pc.OnIceGatheringStateChange = func(s webrtc.IceGatheringState) {
+		log.Debug("OnIceGatheringStateChange ", "state", s)
 	}
 	pc.OnIceComplete = func() {
 		log.Debug("OnIceComplete: ")
@@ -97,10 +100,10 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 
 	// Other PeerConnection Events
 	pc.OnSignalingStateChange = func(s webrtc.SignalingState) {
-		log.Debug("OnSignalingStateChange: ", "state", s)
+		log.Debug("OnSignalingStateChange ", "state", s)
 	}
-	pc.OnConnectionStateChange = func(webrtc.PeerConnectionState) {
-		log.Debug("OnConnectionStateChange: ")
+	pc.OnConnectionStateChange = func(s webrtc.PeerConnectionState) {
+		log.Debug("OnConnectionStateChange ", "state", s)
 	}
 
 	// To trigger ICE, we have to create a RTCDataChannel before
@@ -184,13 +187,24 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 	}
 
 	peer := WebRTCPeer{
+		sync.Mutex{},
 		ref,
 		pc,
 		[]*webrtc.DataChannel{dc},
+		0,
 		cands,
 	}
 
 	return &peer, nil
+}
+
+func (p *WebRTCPeer) NewDataChannel() (*webrtc.DataChannel, error) {
+	defer p.Mutex.Unlock()
+	p.Mutex.Lock()
+	log.Debug("NewDataChannel: after lock")
+
+	p.DCLabel++
+	return p.PC.CreateDataChannel(strconv.FormatUint(p.DCLabel, 10))
 }
 
 func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, error) {
@@ -252,9 +266,8 @@ func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, e
 		log.Debug("OnConnectionStateChange: ")
 	}
 
-	var dc *webrtc.DataChannel
 	pc.OnDataChannel = func(d *webrtc.DataChannel) {
-		log.Debug("OnDataChannel: ")
+		log.Debug("OnDataChannel", "label", d.Label(), "ID", d.ID())
 		d.OnMessage = func(msg []byte) {
 			log.Debug("temp dc.OnMessage", "msg", msg)
 		}
@@ -313,9 +326,11 @@ func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, e
 	//log.Info("response", "bytes", string(respBuf))
 
 	peer := WebRTCPeer{
+		sync.Mutex{},
 		nil,
 		pc,
-		[]*webrtc.DataChannel{dc},
+		[]*webrtc.DataChannel{},
+		0,
 		cands,
 	}
 
@@ -352,8 +367,10 @@ func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 		d.mutex.Unlock()
 	}
 	dc.OnClose = func() {
+		log.Debug("dc.OnClose")
 		d.mutex.Lock()
 		d.closed = true
+		log.Debug("dc.OnClose closed.")
 		d.mutex.Unlock()
 	}
 	return d
@@ -373,6 +390,10 @@ func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
 	log.Debug("DCReadWriteCloser Write", "p", p)
 	defer d.mutex.Unlock()
 	d.mutex.Lock()
+
+	if d.closed {
+		return 0, io.ErrClosedPipe
+	}
 	// copy to new slice since webrtc.DataChannel accesses the
 	// passed byte slice using cgo & unsafe pointers and Writer interface
 	// implementations must not retain p
@@ -384,10 +405,23 @@ func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
 
 func (d *DCReadWriteCloser) Close() (err error) {
 	log.Debug("DCReadWriteCloser Close")
-	defer d.mutex.Unlock()
-	d.mutex.Lock()
 
+	d.mutex.Lock()
+	if d.closed {
+		return nil
+	}
 	d.closed = true
+
+	// we unlock before call to dc.Close since the DataChannel OnClose callback
+	// also locks d, and is both triggered sync from the below call to
+	// dc.Close as well as potentially async for other reasons
+	// (e.g. underlying transport err concurrent to this closing).
+	// since we return if d.closed this should be OK.
+	d.mutex.Unlock()
+
+	// closes DataChannel, triggers OnClosed callback
 	err = d.dc.Close()
+
+	log.Debug("DCReadWriteCloser after d.dc.Close")
 	return
 }

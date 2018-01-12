@@ -63,14 +63,17 @@ func (ts *TCPProxy) ListenAndServe() error {
 	}
 
 	for {
+		log.Debug("TCPProxy Waiting on new conn")
 		conn, err := l.Accept()
 		if err != nil {
 			return err
 		}
+		log.Debug("TCPProxy accepted conn")
 		dst, err := ts.DstGen()
 		if err != nil {
 			return err
 		}
+		log.Debug("TCPProxy generated new dst")
 		go func() {
 			ServeConn(conn, dst)
 		}()
@@ -82,8 +85,8 @@ func ServeConn(src net.Conn, dst io.ReadWriteCloser) {
 	srcDone := make(chan struct{}, 1)
 	dstDone := make(chan struct{}, 1)
 
-	buf0 := make([]byte, 0, transferBufSize)
-	buf1 := make([]byte, 0, transferBufSize)
+	buf0 := make([]byte, transferBufSize)
+	buf1 := make([]byte, transferBufSize)
 	go copyBuffer(src, dst, buf0, srcDone)
 	go copyBuffer(dst, src, buf1, dstDone)
 
@@ -92,11 +95,11 @@ func ServeConn(src net.Conn, dst io.ReadWriteCloser) {
 		// src.SetLinger(0)
 		err := src.Close()
 		if err != nil {
-			log.Error("TCPProxy src.Close", "err", err)
+			log.Error("src.Close", "err", err)
 		}
 		err = dst.Close()
 		if err != nil {
-			log.Error("TCPProxy dst.Close", "err", err)
+			log.Error("dst.Close", "err", err)
 		}
 
 	}
@@ -121,10 +124,10 @@ func copyBuffer(dst io.Writer, src io.Reader, buf []byte, done chan struct{}) {
 	done <- struct{}{}
 
 	if err == nil {
-		log.Debug("TCPProxy io.CopyBuffer closed with no error", "streamed", n)
+		log.Debug("io.CopyBuffer closed with no error", "streamed", n)
 	} else if err == io.EOF {
-		log.Debug("TCPProxy io.CopyBuffer closed with EOF", "streamed", n)
+		log.Debug("io.CopyBuffer closed with EOF", "streamed", n)
 	} else { // TODO: handle other specific io errors
-		log.Info("TCPProxy io.CopyBuffer", "streamed", n, "err", err)
+		log.Info("io.CopyBuffer", "streamed", n, "err", err)
 	}
 }
