@@ -5,12 +5,17 @@ import (
 	"io"
 	"net"
 	"net/url"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"strconv"
 	"sync"
+	"time"
 
-	webrtc "github.com/Gustav-Simonsson/go-webrtc"
 	"github.com/Gustav-Simonsson/orchid-lib/p2p"
+	"github.com/Gustav-Simonsson/orchid-lib/util"
 	"github.com/ethereum/go-ethereum/log"
+	homedir "github.com/mitchellh/go-homedir"
 )
 
 const (
@@ -34,15 +39,12 @@ func simpleSource() error {
 
 	proxy, err := p2p.NewTCPProxy(SourceTCPPort,
 		func() (io.ReadWriteCloser, error) {
-			log.Debug("TCPProxy DstGen:")
 			dc, err := wPeer.NewDataChannel()
-			log.Debug("TCPProxy DstGen: after wPeer.NewDataChannel")
 			if err != nil {
 				log.Error("CreateDataChannel (TCP proxy callback)", "err", err)
 				return nil, err
 			}
 			dcRWC := p2p.NewDCReadWriteCloser(dc)
-			log.Debug("TCPProxy DstGen: after p2p.NewDCReadWriteCloser")
 			return dcRWC, nil
 		})
 	if err != nil {
@@ -50,7 +52,37 @@ func simpleSource() error {
 		return err
 	}
 
-	return proxy.ListenAndServe()
+	go proxy.ListenAndServe()
+	time.Sleep(100 * time.Millisecond)
+
+	home, err := homedir.Dir()
+	if err != nil {
+		panic(err)
+	}
+	orchidDir = filepath.Join(home, ".orchid")
+	userChromeDir := filepath.Join(orchidDir, ".chrome")
+	err = os.MkdirAll(userChromeDir, 0700)
+	if err != nil {
+		return err
+	}
+
+	chromeArgs := []string{
+		"--no-first-run",
+		"--user-data-dir=" + userChromeDir,
+		"--proxy-server=socks5://127.0.0.1:3200",
+		"--host-resolver-rules=MAP * ~NOTFOUND , EXCLUDE 127.0.0.1",
+	}
+	chromeBin := util.GetChromePath()
+
+	log.Info("Source ready, launching chrome...")
+	err = exec.Command(chromeBin, chromeArgs...).Run()
+	if err != nil {
+		log.Error("chrome", "err", err)
+		return err
+	}
+
+	log.Info("chrome exited, stopping source node")
+	return nil
 }
 
 type SimpleExit struct {
@@ -78,44 +110,40 @@ func simpleExit() error {
 		}
 	}()
 
+	log.Info("Exit ready...")
 	p2p.HTTPServer(ExitHTTPPort, func(b []byte) ([]byte, error) {
-		defer exit.Mutex.Unlock()
 		exit.Mutex.Lock()
 
 		// temp for testing. TODO: support multiple peers
 		if exit.LocalPeer != nil {
 			return nil, errors.New("already have source peer")
-		} else {
-			dcReady := make(chan *webrtc.DataChannel, 10)
-			resp, peer, err := p2p.NewExit(b, dcReady)
-			if err != nil {
-				return nil, err
-			}
-			exit.LocalPeer = peer // this is ourself, not the remote peer
-
-			go func() {
-				for {
-					dc, ok := <-dcReady
-					if !ok {
-						log.Error("dcReady chan not ok")
-						return
-					}
-					dcRWC := p2p.NewDCReadWriteCloser(dc)
-
-					// stream (copyBuffer) from dcRWC to SOCKS5
-					conn, err := net.Dial("tcp", "127.0.0.1:"+strconv.Itoa(ExitSOCKS5Port))
-					if err != nil {
-						log.Error("net.Dial (to SOCKS5 proxy)", "err", err)
-						return
-					}
-					_ = conn
-					_ = dcRWC
-					//p2p.ServeConn(conn, dcRWC)
-				}
-			}()
-
-			return resp, err
 		}
+
+		dcReady := make(chan *p2p.DCReadWriteCloser, 10)
+		go func() {
+			for {
+				dcRWC := <-dcReady
+				// stream (copyBuffer) from dcRWC to SOCKS5
+				conn, err := net.Dial("tcp", "127.0.0.1:"+strconv.Itoa(ExitSOCKS5Port))
+				if err != nil {
+					log.Error("net.Dial (to SOCKS5 proxy)", "err", err)
+					return
+				}
+				//_, _ = conn, dcRWC
+				go p2p.ServeConn(conn, dcRWC)
+				log.Info("p2p.NewDCReadWriteCloser (exit)", "ns", time.Now().UnixNano())
+			}
+		}()
+
+		resp, peer, err := p2p.NewExit(b, dcReady)
+		if err != nil {
+			return nil, err
+		}
+		exit.LocalPeer = peer // this is ourself, not the remote peer
+		exit.Mutex.Unlock()
+
+		return resp, err
+
 	})
 	return nil
 }

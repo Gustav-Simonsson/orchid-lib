@@ -63,18 +63,16 @@ func (ts *TCPProxy) ListenAndServe() error {
 	}
 
 	for {
-		log.Debug("TCPProxy Waiting on new conn")
 		conn, err := l.Accept()
 		if err != nil {
 			return err
 		}
-		log.Debug("TCPProxy accepted conn")
 		dst, err := ts.DstGen()
 		if err != nil {
 			return err
 		}
-		log.Debug("TCPProxy generated new dst")
 		go func() {
+			log.Debug("ServeConn (source)")
 			ServeConn(conn, dst)
 		}()
 	}

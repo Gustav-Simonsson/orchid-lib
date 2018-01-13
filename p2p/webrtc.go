@@ -10,6 +10,7 @@ import (
 	"net/url"
 	"strconv"
 	"sync"
+	"time"
 
 	webrtc "github.com/Gustav-Simonsson/go-webrtc"
 	"github.com/ethereum/go-ethereum/log"
@@ -64,7 +65,7 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 	// Prior to step 1:
 	// configure go-webrtc lib, create a new PeerConnection and add
 	// event listeners for Ice, signaling and connection events.
-	webrtc.SetLoggingVerbosity(4) // 1-4: INFO, WARN, ERROR, TRACE
+	webrtc.SetLoggingVerbosity(3) // 1-4: INFO, WARN, ERROR, TRACE
 	config := webrtc.NewConfiguration(
 		webrtc.OptionIceServer(stunServer),
 	)
@@ -201,13 +202,17 @@ func NewWebRTCPeer(ref *url.URL) (*WebRTCPeer, error) {
 func (p *WebRTCPeer) NewDataChannel() (*webrtc.DataChannel, error) {
 	defer p.Mutex.Unlock()
 	p.Mutex.Lock()
-	log.Debug("NewDataChannel: after lock")
 
 	p.DCLabel++
-	return p.PC.CreateDataChannel(strconv.FormatUint(p.DCLabel, 10))
+	dc, err := p.PC.CreateDataChannel(strconv.FormatUint(p.DCLabel, 10))
+	if err != nil {
+		return nil, err
+	}
+	p.DCs = append(p.DCs, dc)
+	return dc, nil
 }
 
-func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, error) {
+func NewExit(b []byte, dcReady chan *DCReadWriteCloser) ([]byte, *WebRTCPeer, error) {
 	offer := new(Offer)
 	err := json.Unmarshal(b, offer)
 	if err != nil {
@@ -237,6 +242,16 @@ func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, e
 		return nil, nil, err
 	}
 
+	pc.OnDataChannel = func(d *webrtc.DataChannel) {
+		if d.Label() == "0" {
+			return
+		}
+		dcReady <- NewDCReadWriteCloser(d)
+
+		log.Debug("OnDataChannel", "label", d.Label(), "ID", d.ID())
+		log.Info("pc.OnDataChannel", "ns", time.Now().UnixNano())
+	}
+
 	// Listen to our own candidates
 	cands := make([]*webrtc.IceCandidate, 2)
 	candChan := make(chan webrtc.IceCandidate, 2)
@@ -264,14 +279,6 @@ func NewExit(b []byte, dcReady chan *webrtc.DataChannel) ([]byte, *WebRTCPeer, e
 	}
 	pc.OnConnectionStateChange = func(webrtc.PeerConnectionState) {
 		log.Debug("OnConnectionStateChange: ")
-	}
-
-	pc.OnDataChannel = func(d *webrtc.DataChannel) {
-		log.Debug("OnDataChannel", "label", d.Label(), "ID", d.ID())
-		d.OnMessage = func(msg []byte) {
-			log.Debug("temp dc.OnMessage", "msg", msg)
-		}
-		dcReady <- d
 	}
 
 	err = pc.SetRemoteDescription(&sdpAndIce.Description)
@@ -363,14 +370,12 @@ func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 		if err != nil {
 			log.Error("dc.OnMessage buf.Write", "err", err)
 		}
-		log.Debug("dc.OnMessage ", "msg", msg)
+		//log.Debug("dc.OnMessage ", "msg", msg)
 		d.mutex.Unlock()
 	}
 	dc.OnClose = func() {
-		log.Debug("dc.OnClose")
 		d.mutex.Lock()
 		d.closed = true
-		log.Debug("dc.OnClose closed.")
 		d.mutex.Unlock()
 	}
 	return d
@@ -379,15 +384,20 @@ func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
 	defer d.mutex.Unlock()
 	d.mutex.Lock()
-	//log.Debug("DCReadWriteCloser Read", "p", p)
 	if d.closed {
 		return 0, io.EOF
 	}
-	return d.buf.Read(p)
+	nr, err := d.buf.Read(p)
+	//log.Debug("DCReadWriteCloser Read", "n", nr, "err", err)
+	if err == io.EOF {
+		return nr, nil
+	} else {
+		return nr, err
+	}
 }
 
 func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
-	log.Debug("DCReadWriteCloser Write", "p", p)
+	//log.Debug("DCReadWriteCloser Write", "p", p)
 	defer d.mutex.Unlock()
 	d.mutex.Lock()
 
@@ -404,8 +414,6 @@ func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
 }
 
 func (d *DCReadWriteCloser) Close() (err error) {
-	log.Debug("DCReadWriteCloser Close")
-
 	d.mutex.Lock()
 	if d.closed {
 		return nil
@@ -421,7 +429,5 @@ func (d *DCReadWriteCloser) Close() (err error) {
 
 	// closes DataChannel, triggers OnClosed callback
 	err = d.dc.Close()
-
-	log.Debug("DCReadWriteCloser after d.dc.Close")
 	return
 }
