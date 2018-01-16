@@ -1,12 +1,21 @@
-package p2p
+/*  orchid-lib - golang packages for the Orchid protocol.
+    Copyright (C) 2018  Gustav Simonsson
 
-import (
-	"io"
-	"net"
-	"strconv"
+    This file is part of orchid-lib.
 
-	"github.com/ethereum/go-ethereum/log"
-)
+    orchid-lib is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    orchid-lib is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 
 /* In Orchid source nodes, we want a web browser connecting to a SOCKS5 proxy
    that abstracts the Orchid proxying of data - the forwarding of all data
@@ -41,6 +50,16 @@ import (
    and the SOCKS5 protocol handling takes place at the exit node.
 
 */
+
+package p2p
+
+import (
+	"io"
+	"net"
+	"strconv"
+
+	"github.com/ethereum/go-ethereum/log"
+)
 
 type TCPProxy struct {
 	Host   string
