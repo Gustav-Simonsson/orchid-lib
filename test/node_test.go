@@ -45,7 +45,47 @@ func TestMain(m *testing.M) {
 
 }
 
-func TestNode(t *testing.T) {
+func TestNodeOneConn(t *testing.T) {
+	// Setup simple test source & exit 	omain.SimpleSource()
+	go node.SimpleExit()
+	go node.SimpleSource()
+	time.Sleep(400 * time.Millisecond)
+	log.Debug("Node Test after node setup")
+
+	// setup test HTTP server to act as external website
+	http.HandleFunc("/orchid-node-test/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "test resp %v", 1)
+	})
+	go http.ListenAndServe(":3300", nil)
+
+	// Configure SOCKS5 Dialer to proxy the test HTTP requests through
+	dialSocksProxy := socks.DialSocksProxy(socks.SOCKS5, "127.0.0.1:"+strconv.Itoa(node.SourceTCPPort))
+
+	tr := &http.Transport{Dial: dialSocksProxy}
+	httpClient := &http.Client{Transport: tr}
+
+	resp, err := httpClient.Get("http://127.0.0.1:3300/orchid-node-test/")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		t.Fatal(resp.StatusCode)
+	}
+	buf, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(buf) != "test resp 1" {
+		t.Fatal("buf mismatch, got: ", string(buf))
+	}
+
+	tr.CloseIdleConnections()
+
+	time.Sleep(200 * time.Millisecond)
+}
+
+func TestNodeConcurrentConns(t *testing.T) {
 	// Setup simple test source & exit 	omain.SimpleSource()
 	go node.SimpleExit()
 	go node.SimpleSource()
@@ -67,7 +107,6 @@ func TestNode(t *testing.T) {
 			tr := &http.Transport{Dial: dialSocksProxy}
 			httpClient := &http.Client{Transport: tr}
 
-			// TODO: verify req, then multiple concurrent ones
 			resp, err := httpClient.Get("http://127.0.0.1:3300/orchid-node-test/")
 			log.Debug("TEST FUNC B", "i", i)
 			if err != nil {
