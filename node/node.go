@@ -1,21 +1,16 @@
-package main
+package node
 
 import (
 	"errors"
 	"io"
 	"net"
 	"net/url"
-	"os"
-	"os/exec"
-	"path/filepath"
 	"strconv"
 	"sync"
 	"time"
 
 	"github.com/Gustav-Simonsson/orchid-lib/p2p"
-	"github.com/Gustav-Simonsson/orchid-lib/util"
 	"github.com/ethereum/go-ethereum/log"
-	homedir "github.com/mitchellh/go-homedir"
 )
 
 const (
@@ -24,7 +19,7 @@ const (
 	ExitSOCKS5Port = 3202
 )
 
-func simpleSource() error {
+func SimpleSource() error {
 	log.Info("Starting simple source node...")
 
 	ref, err := url.Parse("http://localhost:" + strconv.Itoa(ExitHTTPPort))
@@ -40,10 +35,13 @@ func simpleSource() error {
 	proxy, err := p2p.NewTCPProxy(SourceTCPPort,
 		func() (io.ReadWriteCloser, error) {
 			dc, err := wPeer.NewDataChannel()
+			log.Debug("(source) wPeer.NewDataChannel", "err", err, "ns", time.Now().UnixNano())
 			if err != nil {
 				log.Error("CreateDataChannel (TCP proxy callback)", "err", err)
 				return nil, err
 			}
+
+			//time.Sleep(time.Millisecond * 200)
 			dcRWC := p2p.NewDCReadWriteCloser(dc)
 			return dcRWC, nil
 		})
@@ -52,49 +50,52 @@ func simpleSource() error {
 		return err
 	}
 
-	go proxy.ListenAndServe()
-	time.Sleep(100 * time.Millisecond)
+	proxy.ListenAndServe()
 
-	home, err := homedir.Dir()
-	if err != nil {
-		panic(err)
-	}
-	orchidDir = filepath.Join(home, ".orchid")
-	userChromeDir := filepath.Join(orchidDir, ".chrome")
-	err = os.MkdirAll(userChromeDir, 0700)
-	if err != nil {
-		return err
-	}
+	//time.Sleep(100 * time.Millisecond)
+	/*
+		home, err := homedir.Dir()
+		if err != nil {
+			panic(err)
+		}
+		orchidDir = filepath.Join(home, ".orchid")
+		userChromeDir := filepath.Join(orchidDir, ".chrome")
+		err = os.MkdirAll(userChromeDir, 0700)
+		if err != nil {
+			return err
+		}
 
-	chromeArgs := []string{
-		"--no-first-run",
-		"--user-data-dir=" + userChromeDir,
-		"--proxy-server=socks5://127.0.0.1:3200",
-		"--host-resolver-rules=MAP * ~NOTFOUND , EXCLUDE 127.0.0.1",
-	}
-	chromeBin := util.GetChromePath()
+		chromeArgs := []string{
+			"--no-first-run",
+			"--user-data-dir=" + userChromeDir,
+			"--proxy-server=socks5://127.0.0.1:3200",
+			"--host-resolver-rules=MAP * ~NOTFOUND , EXCLUDE 127.0.0.1",
+			"www.imgur.com",
+		}
+		chromeBin := util.GetChromePath()
 
-	log.Info("Source ready, launching chrome...")
-	err = exec.Command(chromeBin, chromeArgs...).Run()
-	if err != nil {
-		log.Error("chrome", "err", err)
-		return err
-	}
+		log.Info("Source ready, launching chrome...")
+		err = exec.Command(chromeBin, chromeArgs...).Run()
+		if err != nil {
+			log.Error("chrome", "err", err)
+			return err
+		}
 
-	log.Info("chrome exited, stopping source node")
+		log.Info("chrome exited, stopping source node")
+	*/
 	return nil
 }
 
-type SimpleExit struct {
+type simpleExit struct {
 	Mutex sync.Mutex
 	// TODO: generalize to multiple peers
 	LocalPeer *p2p.WebRTCPeer
 }
 
-func simpleExit() error {
+func SimpleExit() error {
 	log.Info("Starting simple exit node...")
 
-	exit := SimpleExit{
+	exit := simpleExit{
 		sync.Mutex{},
 		nil}
 
@@ -119,7 +120,7 @@ func simpleExit() error {
 			return nil, errors.New("already have source peer")
 		}
 
-		dcReady := make(chan *p2p.DCReadWriteCloser, 10)
+		dcReady := make(chan *p2p.DCReadWriteCloser, 70)
 		go func() {
 			for {
 				dcRWC := <-dcReady
@@ -131,7 +132,7 @@ func simpleExit() error {
 				}
 				//_, _ = conn, dcRWC
 				go p2p.ServeConn(conn, dcRWC)
-				log.Info("p2p.NewDCReadWriteCloser (exit)", "ns", time.Now().UnixNano())
+				//log.Info("p2p.NewDCReadWriteCloser (exit)", "ns", time.Now().UnixNano())
 			}
 		}()
 

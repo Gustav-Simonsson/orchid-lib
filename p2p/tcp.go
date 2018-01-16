@@ -71,10 +71,10 @@ func (ts *TCPProxy) ListenAndServe() error {
 		if err != nil {
 			return err
 		}
-		go func() {
+		go func(c net.Conn, d io.ReadWriteCloser) {
 			log.Debug("ServeConn (source)")
-			ServeConn(conn, dst)
-		}()
+			ServeConn(c, d)
+		}(conn, dst)
 	}
 	return nil
 }
@@ -85,6 +85,7 @@ func ServeConn(src net.Conn, dst io.ReadWriteCloser) {
 
 	buf0 := make([]byte, transferBufSize)
 	buf1 := make([]byte, transferBufSize)
+	// TODO: add timeout channels
 	go copyBuffer(src, dst, buf0, srcDone)
 	go copyBuffer(dst, src, buf1, dstDone)
 

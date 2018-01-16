@@ -246,10 +246,14 @@ func NewExit(b []byte, dcReady chan *DCReadWriteCloser) ([]byte, *WebRTCPeer, er
 		if d.Label() == "0" {
 			return
 		}
-		dcReady <- NewDCReadWriteCloser(d)
+
+		d.OnOpen = func() {
+			log.Debug("(exit) DC.OnOpen", "ReadyState", d.ReadyState(), "ns", time.Now().UnixNano())
+			dcReady <- NewDCReadWriteCloser(d)
+		}
 
 		log.Debug("OnDataChannel", "label", d.Label(), "ID", d.ID())
-		log.Info("pc.OnDataChannel", "ns", time.Now().UnixNano())
+		//log.Info("pc.OnDataChannel", "ns", time.Now().UnixNano())
 	}
 
 	// Listen to our own candidates
@@ -376,6 +380,7 @@ func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 	dc.OnClose = func() {
 		d.mutex.Lock()
 		d.closed = true
+		log.Debug("NewDCReadWriteCloser dc.OnClose", "label", dc.Label(), "ID", dc.ID())
 		d.mutex.Unlock()
 	}
 	return d

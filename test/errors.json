@@ -1,0 +1,610 @@
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T15:05:55.748016619-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T15:05:55.748193021-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T15:06:18.118911804-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T15:06:18.11904714-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T15:06:45.176885511-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T15:06:45.177034486-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T15:06:45.17695378-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T15:06:45.182142263-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T15:06:45.182485502-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 39670 typ host generation 0 ufrag 0K93 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T15:06:45.182887617-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 39670 typ srflx raddr 192.168.1.155 rport 39670 generation 0 ufrag 0K93 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T15:06:45.225492718-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T15:06:45.283139579-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T15:06:45.33376826-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T15:06:45.333950719-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 7486211872924965166 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:0K93\\r\\na=ice-pwd:vrwx6FDfDzN2aiNU0sbNAIc9\\r\\na=fingerprint:sha-256 2C:8C:30:53:3A:E1:9C:E0:4B:8A:B3:2B:37:AC:B1:B2:C9:44:49:97:AA:49:48:8C:E0:78:F4:7F:3A:F9:B3:7D\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T15:06:45.335771381-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 7486211872924965166 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:0K93\r\na=ice-pwd:vrwx6FDfDzN2aiNU0sbNAIc9\r\na=fingerprint:sha-256 2C:8C:30:53:3A:E1:9C:E0:4B:8A:B3:2B:37:AC:B1:B2:C9:44:49:97:AA:49:48:8C:E0:78:F4:7F:3A:F9:B3:7D\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc42011b020 0xc42011b050 0xc42011b080]}}","t":"2018-01-15T15:06:45.336195755-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T15:06:45.336442871-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T15:06:45.336555324-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T15:06:45.336656213-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T15:06:45.343751312-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T15:06:45.344158387-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T15:06:45.344832286-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 39201 typ host tcptype passive generation 0 ufrag 0K93 network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T15:06:45.345333641-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T15:06:45.346650096-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T15:06:45.347617755-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T15:06:45.347740066-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T15:06:45.348458944-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 39928 typ host generation 0 ufrag nNUZ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T15:06:45.349193595-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 39928 typ srflx raddr 192.168.1.155 rport 39928 generation 0 ufrag nNUZ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T15:06:45.372393334-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 36535 typ host tcptype passive generation 0 ufrag nNUZ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T15:06:45.45088651-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T15:06:45.451997511-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T15:06:45.452094446-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T15:06:45.454234286-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T15:06:45.455690583-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T15:06:45.45581833-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T15:06:45.459908797-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T15:06:45.460027094-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T15:06:45.461274345-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T15:06:45.461466633-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T15:06:45.600352962-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516057607957022329,"t":"2018-01-15T15:06:47.957023695-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T15:06:47.957166948-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T15:06:47.957295589-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516057607957596344,"t":"2018-01-15T15:06:47.957597812-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":0,"t":"2018-01-15T15:06:47.958045934-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":78,"t":"2018-01-15T15:06:47.958219363-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T15:06:47.958574805-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T15:06:47.959049571-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":0,"t":"2018-01-15T15:06:47.959157808-08:00"}
+{"err":"read tcp 127.0.0.1:3200-\u003e127.0.0.1:34722: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":78,"t":"2018-01-15T15:06:47.959251431-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T18:12:11.875455117-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T18:12:11.87563823-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T18:12:11.875508902-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T18:12:11.881111571-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T18:12:11.881567071-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 41624 typ host generation 0 ufrag Lcnt network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:12:11.881965483-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 41624 typ srflx raddr 192.168.1.155 rport 41624 generation 0 ufrag Lcnt network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:12:11.932217618-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:12:11.982416499-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T18:12:12.032539505-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:12:12.032591196-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 2095800103668435604 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:Lcnt\\r\\na=ice-pwd:HKpTgHQrXi4zbJk+PfcZMUFQ\\r\\na=fingerprint:sha-256 29:9E:21:32:12:B4:06:E8:37:F5:73:42:F1:CD:F1:B7:69:4B:FB:D4:9E:AD:EC:52:52:12:26:64:06:C5:63:2B\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T18:12:12.033293133-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 2095800103668435604 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:Lcnt\r\na=ice-pwd:HKpTgHQrXi4zbJk+PfcZMUFQ\r\na=fingerprint:sha-256 29:9E:21:32:12:B4:06:E8:37:F5:73:42:F1:CD:F1:B7:69:4B:FB:D4:9E:AD:EC:52:52:12:26:64:06:C5:63:2B\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc420184f30 0xc420184f60 0xc420184f90]}}","t":"2018-01-15T18:12:12.033408679-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:12:12.033488727-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:12:12.033512875-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:12:12.033550554-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T18:12:12.037403114-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:12:12.03761305-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:12:12.037881292-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 58803 typ host tcptype passive generation 0 ufrag Lcnt network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:12:12.038110323-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T18:12:12.038658943-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:12:12.039247322-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:12:12.039275768-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:12:12.039913963-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 56073 typ host generation 0 ufrag +Haf network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:12:12.040010932-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 56073 typ srflx raddr 192.168.1.155 rport 56073 generation 0 ufrag +Haf network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:12:12.059942106-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 34457 typ host tcptype passive generation 0 ufrag +Haf network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:12:12.14140979-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:12:12.142568166-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:12:12.142682466-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T18:12:12.145928366-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T18:12:12.148234156-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T18:12:12.148426433-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:12:12.154591241-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:12:12.154900766-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T18:12:12.156326483-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T18:12:12.15650672-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T18:12:12.275580643-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T18:13:45.643092502-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T18:13:45.643140281-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T18:13:45.643311964-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T18:13:45.648444355-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T18:13:45.648724575-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 38557 typ host generation 0 ufrag nDAv network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:13:45.648985036-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 38557 typ srflx raddr 192.168.1.155 rport 38557 generation 0 ufrag nDAv network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:13:45.697669061-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:13:45.749277565-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T18:13:45.801626735-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:13:45.801694318-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 9201844828205847208 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:nDAv\\r\\na=ice-pwd:iZLvlIc2yn5LyakzsaAnehLw\\r\\na=fingerprint:sha-256 AE:AD:39:73:D4:87:CD:E1:03:11:FF:43:DB:BC:59:74:97:16:B2:65:83:D7:B8:5A:61:99:CB:F1:B3:58:8A:75\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T18:13:45.802532665-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 9201844828205847208 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:nDAv\r\na=ice-pwd:iZLvlIc2yn5LyakzsaAnehLw\r\na=fingerprint:sha-256 AE:AD:39:73:D4:87:CD:E1:03:11:FF:43:DB:BC:59:74:97:16:B2:65:83:D7:B8:5A:61:99:CB:F1:B3:58:8A:75\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc420182f30 0xc420182f60 0xc420182f90]}}","t":"2018-01-15T18:13:45.802728914-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:13:45.802884186-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:13:45.802934664-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:13:45.80298504-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T18:13:45.807255773-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:13:45.807504609-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:13:45.807835998-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59025 typ host tcptype passive generation 0 ufrag nDAv network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:13:45.808120464-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T18:13:45.80885115-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:13:45.809570368-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:13:45.809614204-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:13:45.81008178-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 60696 typ host generation 0 ufrag Idhh network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:13:45.810341845-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 60696 typ srflx raddr 192.168.1.155 rport 60696 generation 0 ufrag Idhh network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:13:45.832063003-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 46149 typ host tcptype passive generation 0 ufrag Idhh network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:13:45.911678308-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:13:45.913147693-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:13:45.913303828-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T18:13:45.916474838-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T18:13:45.919150262-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T18:13:45.91936038-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T18:13:45.926934946-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:13:45.927236364-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:13:45.927635232-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T18:13:45.927260715-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T18:13:46.043294577-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516068826046080012,"t":"2018-01-15T18:13:46.046083271-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T18:13:46.046503628-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T18:13:46.046718272-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516068826047415101,"t":"2018-01-15T18:13:46.047418881-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T18:29:41.75729659-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T18:29:41.757293434-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T18:29:41.757623609-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T18:29:41.762610425-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T18:29:41.762920673-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 39822 typ host generation 0 ufrag MZIw network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:29:41.763202766-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 39822 typ srflx raddr 192.168.1.155 rport 39822 generation 0 ufrag MZIw network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:29:41.812585497-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:29:41.864563621-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T18:29:41.914757089-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:29:41.915009748-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 2945735297563742002 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:MZIw\\r\\na=ice-pwd:PA/wlC3r9WdneLDyMWpmvuul\\r\\na=fingerprint:sha-256 BF:1E:2C:98:DF:E9:01:C5:01:41:E7:89:E1:D6:4F:5A:C6:57:B5:B9:5B:FD:D7:9F:99:8E:6E:3C:E0:97:70:42\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T18:29:41.916934383-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 2945735297563742002 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:MZIw\r\na=ice-pwd:PA/wlC3r9WdneLDyMWpmvuul\r\na=fingerprint:sha-256 BF:1E:2C:98:DF:E9:01:C5:01:41:E7:89:E1:D6:4F:5A:C6:57:B5:B9:5B:FD:D7:9F:99:8E:6E:3C:E0:97:70:42\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc420144870 0xc4201448a0 0xc4201448d0]}}","t":"2018-01-15T18:29:41.917380778-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:29:41.91772629-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:29:41.917841625-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:29:41.917963435-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T18:29:41.925484625-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:29:41.925954411-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:29:41.926628219-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 56653 typ host tcptype passive generation 0 ufrag MZIw network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:29:41.927166877-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T18:29:41.928586324-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:29:41.929645321-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:29:41.929767471-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:29:41.93042619-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 40396 typ host generation 0 ufrag 1Og0 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:29:41.931633122-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 40396 typ srflx raddr 192.168.1.155 rport 40396 generation 0 ufrag 1Og0 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:29:41.953313761-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 50449 typ host tcptype passive generation 0 ufrag 1Og0 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:29:42.032524952-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:29:42.033072314-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:29:42.033171492-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T18:29:42.035456923-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T18:29:42.037658692-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T18:29:42.037817017-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:29:42.042333026-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:29:42.042513658-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T18:29:42.044025522-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T18:29:42.044158731-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T18:29:42.157520563-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516069782159891768,"t":"2018-01-15T18:29:42.159894433-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T18:29:42.160184501-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T18:29:42.160190935-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516069782161140867,"t":"2018-01-15T18:29:42.161144611-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T18:46:17.187487307-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T18:46:17.187634564-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T18:46:17.187550193-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T18:46:17.192707148-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T18:46:17.192977288-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 53072 typ host generation 0 ufrag /ii/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:46:17.193268299-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 53072 typ srflx raddr 192.168.1.155 rport 53072 generation 0 ufrag /ii/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:46:17.244519724-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:46:17.294409419-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T18:46:17.344580957-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:46:17.344755513-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 4036743169594894699 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:/ii/\\r\\na=ice-pwd:3VlkXyHDgyFjbzPBDS7hyeL3\\r\\na=fingerprint:sha-256 2E:E3:4A:09:C0:C9:3D:DA:FD:A4:3F:38:9A:7C:62:8A:5D:37:6E:AA:84:F5:06:75:FB:2A:5C:7F:8D:9C:FF:5B\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T18:46:17.346577306-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 4036743169594894699 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:/ii/\r\na=ice-pwd:3VlkXyHDgyFjbzPBDS7hyeL3\r\na=fingerprint:sha-256 2E:E3:4A:09:C0:C9:3D:DA:FD:A4:3F:38:9A:7C:62:8A:5D:37:6E:AA:84:F5:06:75:FB:2A:5C:7F:8D:9C:FF:5B\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc42011a390 0xc42011a3c0 0xc42011a3f0]}}","t":"2018-01-15T18:46:17.34700449-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:46:17.347265561-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:46:17.347388175-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T18:46:17.347499191-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T18:46:17.355255037-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:46:17.355682718-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:46:17.356286662-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 40141 typ host tcptype passive generation 0 ufrag /ii/ network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T18:46:17.356795104-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T18:46:17.358068482-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:46:17.358894243-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:46:17.358971843-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:46:17.359670441-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 45040 typ host generation 0 ufrag MU+S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:46:17.360288419-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 45040 typ srflx raddr 192.168.1.155 rport 45040 generation 0 ufrag MU+S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:46:17.383634714-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 47559 typ host tcptype passive generation 0 ufrag MU+S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T18:46:17.462137788-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T18:46:17.46317143-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T18:46:17.463263902-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T18:46:17.465383661-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T18:46:17.466800577-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T18:46:17.466933925-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T18:46:17.470513508-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T18:46:17.47063512-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T18:46:17.471950277-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T18:46:17.47211589-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T18:46:17.588101318-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516070777590097131,"t":"2018-01-15T18:46:17.590099197-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T18:46:17.590322768-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T18:46:17.590619801-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516070777591188841,"t":"2018-01-15T18:46:17.591192132-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T18:46:17.599288494-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":140,"t":"2018-01-15T18:46:17.599583614-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T18:46:17.600040819-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T18:46:17.600470605-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T18:46:17.60063503-08:00"}
+{"err":"read tcp 127.0.0.1:55248-\u003e127.0.0.1:3202: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":140,"t":"2018-01-15T18:46:17.600775845-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T18:46:17.612060421-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:13:38.694285594-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:13:38.694443871-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:13:38.694304155-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:13:38.699617893-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:13:38.699909179-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 46134 typ host generation 0 ufrag MQQE network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:13:38.700215803-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 46134 typ srflx raddr 192.168.1.155 rport 46134 generation 0 ufrag MQQE network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:13:38.743179032-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:13:38.800635188-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:13:38.850952028-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:13:38.851190163-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 6808067490505256465 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:MQQE\\r\\na=ice-pwd:2Rr6RO3nNJFOgba4DdT2yN6g\\r\\na=fingerprint:sha-256 D7:BD:D3:B6:E4:53:C4:5D:4B:84:AA:50:1F:3B:45:D9:A0:A7:42:07:D3:0A:B2:C8:7B:CE:EF:2B:3F:BF:32:EF\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:13:38.853026977-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 6808067490505256465 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:MQQE\r\na=ice-pwd:2Rr6RO3nNJFOgba4DdT2yN6g\r\na=fingerprint:sha-256 D7:BD:D3:B6:E4:53:C4:5D:4B:84:AA:50:1F:3B:45:D9:A0:A7:42:07:D3:0A:B2:C8:7B:CE:EF:2B:3F:BF:32:EF\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc420146360 0xc420146390 0xc4201463c0]}}","t":"2018-01-15T19:13:38.853467484-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:13:38.853819911-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:13:38.853922766-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:13:38.854007656-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:13:38.861350384-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:13:38.861782114-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:13:38.862368917-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59325 typ host tcptype passive generation 0 ufrag MQQE network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:13:38.862944551-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:13:38.864343701-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:13:38.865180959-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:13:38.865258964-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:13:38.86590195-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 53617 typ host generation 0 ufrag A7fZ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:13:38.866612754-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 53617 typ srflx raddr 192.168.1.155 rport 53617 generation 0 ufrag A7fZ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:13:38.888761949-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 51255 typ host tcptype passive generation 0 ufrag A7fZ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:13:38.968006749-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:13:38.969038106-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:13:38.969151806-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:13:38.971392123-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:13:38.972845633-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:13:38.972984541-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:13:38.977006929-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:13:38.977136782-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:13:38.978305161-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:13:38.978477162-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:13:39.09446197-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072419096498793,"t":"2018-01-15T19:13:39.096501443-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:13:39.09676065-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:13:39.096951067-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072419097427524,"t":"2018-01-15T19:13:39.097430538-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:13:39.10442244-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":140,"t":"2018-01-15T19:13:39.104576287-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:13:39.105025773-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:13:39.105706179-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:13:39.105907931-08:00"}
+{"err":"read tcp 127.0.0.1:55342-\u003e127.0.0.1:3202: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":140,"t":"2018-01-15T19:13:39.106041957-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:13:39.117755019-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:14:26.492563295-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:14:26.492623857-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:14:26.492790051-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:14:26.497861189-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:14:26.498143949-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 52841 typ host generation 0 ufrag Nef8 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:26.49844359-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 52841 typ srflx raddr 192.168.1.155 rport 52841 generation 0 ufrag Nef8 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:26.532404965-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:26.599398872-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:14:26.649652945-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:14:26.649798522-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 5078789993604470109 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:Nef8\\r\\na=ice-pwd:dksOoZsd5caNUFtBiwT/k/HV\\r\\na=fingerprint:sha-256 99:8D:58:DB:C4:E5:32:97:9B:8B:FA:1B:3A:EA:6D:AC:1D:7C:0D:78:1D:09:A9:9A:4B:59:88:02:43:EF:92:F0\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:14:26.651431493-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 5078789993604470109 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:Nef8\r\na=ice-pwd:dksOoZsd5caNUFtBiwT/k/HV\r\na=fingerprint:sha-256 99:8D:58:DB:C4:E5:32:97:9B:8B:FA:1B:3A:EA:6D:AC:1D:7C:0D:78:1D:09:A9:9A:4B:59:88:02:43:EF:92:F0\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc420015830 0xc420015860 0xc420015890]}}","t":"2018-01-15T19:14:26.651871319-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:14:26.652132555-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:14:26.652276808-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:14:26.65238089-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:14:26.659973633-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:14:26.660376587-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:14:26.660886511-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 53217 typ host tcptype passive generation 0 ufrag Nef8 network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:14:26.661343483-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:14:26.662569182-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:14:26.663487288-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:14:26.663610009-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:14:26.664387594-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 48075 typ host generation 0 ufrag GRbj network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:26.665044761-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 48075 typ srflx raddr 192.168.1.155 rport 48075 generation 0 ufrag GRbj network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:26.689828567-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 39101 typ host tcptype passive generation 0 ufrag GRbj network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:26.765998332-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:14:26.766956522-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:14:26.767059172-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:14:26.769147976-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:14:26.770704317-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:14:26.770857542-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:14:26.774697168-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:14:26.774819048-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:14:26.775525518-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:14:26.775692004-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:14:26.893213356-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072466895349177,"t":"2018-01-15T19:14:26.895351115-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:14:26.895655074-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:14:26.89581807-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072466896303511,"t":"2018-01-15T19:14:26.896305568-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072466897090802,"t":"2018-01-15T19:14:26.89709387-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:14:26.89731887-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:14:26.897459756-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072466898023392,"t":"2018-01-15T19:14:26.898026527-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:14:26.918243276-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:14:49.826289442-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:14:49.826342305-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:14:49.826496529-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:14:49.831674555-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:14:49.83196443-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 50902 typ host generation 0 ufrag UJko network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:49.832241549-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 50902 typ srflx raddr 192.168.1.155 rport 50902 generation 0 ufrag UJko network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:49.875257263-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:49.932832629-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:14:49.98307152-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:14:49.983245026-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 3528533088755550854 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:UJko\\r\\na=ice-pwd:eDttu7Jqd+oc6CsQoop2sNdB\\r\\na=fingerprint:sha-256 14:CD:95:02:EF:35:84:F0:CC:50:E7:63:62:72:DA:4A:57:0D:D0:11:12:DF:0F:59:1D:1D:C5:75:4E:67:61:2D\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:14:49.984894264-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 3528533088755550854 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:UJko\r\na=ice-pwd:eDttu7Jqd+oc6CsQoop2sNdB\r\na=fingerprint:sha-256 14:CD:95:02:EF:35:84:F0:CC:50:E7:63:62:72:DA:4A:57:0D:D0:11:12:DF:0F:59:1D:1D:C5:75:4E:67:61:2D\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc420015830 0xc420015860 0xc420015890]}}","t":"2018-01-15T19:14:49.985309885-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:14:49.988165894-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:14:49.988378343-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:14:49.988531999-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:14:49.997904378-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:14:49.998389502-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:14:49.998985861-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 44119 typ host tcptype passive generation 0 ufrag UJko network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:14:49.999680475-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:14:50.001617075-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:14:50.002801879-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:14:50.002980421-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:14:50.003618546-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 37634 typ host generation 0 ufrag FUCL network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:50.004229358-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 37634 typ srflx raddr 192.168.1.155 rport 37634 generation 0 ufrag FUCL network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:50.042128285-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 43759 typ host tcptype passive generation 0 ufrag FUCL network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:14:50.105172769-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:14:50.106234949-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:14:50.106330861-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:14:50.108296414-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:14:50.109695351-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:14:50.10983202-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:14:50.113743925-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:14:50.113850673-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:14:50.114942352-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:14:50.115113735-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:14:50.22706758-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072490229338616,"t":"2018-01-15T19:14:50.229341424-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:14:50.229749258-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:14:50.229753667-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072490230304846,"t":"2018-01-15T19:14:50.230308274-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072490231690929,"t":"2018-01-15T19:14:50.231694363-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:14:50.232390812-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072490233000217,"t":"2018-01-15T19:14:50.233003096-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072490233816963,"t":"2018-01-15T19:14:50.233818708-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:14:50.23415805-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072490234756921,"t":"2018-01-15T19:14:50.234760957-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072490235478549,"t":"2018-01-15T19:14:50.235480199-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:14:50.235701324-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:14:50.235943813-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:14:50.236473256-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072490236801967,"t":"2018-01-15T19:14:50.23680596-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:14:50.237675443-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:14:50.272569194-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:15:10.577910343-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:15:10.577908899-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:15:10.578167076-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:15:10.583216733-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:15:10.583559599-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 43785 typ host generation 0 ufrag aYoD network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:10.583967682-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 43785 typ srflx raddr 192.168.1.155 rport 43785 generation 0 ufrag aYoD network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:10.606449785-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:10.685127975-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:15:10.735439468-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:15:10.735591209-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 2340160803574846684 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:aYoD\\r\\na=ice-pwd:3+oApf9clTdj5xR/Hj5+a19X\\r\\na=fingerprint:sha-256 F7:FD:BE:CF:B0:42:9B:F1:0E:86:80:A7:5B:62:27:1D:78:AA:5A:14:CD:46:2C:DE:A8:F5:CD:5C:CF:6D:6C:80\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:15:10.737666393-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 2340160803574846684 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:aYoD\r\na=ice-pwd:3+oApf9clTdj5xR/Hj5+a19X\r\na=fingerprint:sha-256 F7:FD:BE:CF:B0:42:9B:F1:0E:86:80:A7:5B:62:27:1D:78:AA:5A:14:CD:46:2C:DE:A8:F5:CD:5C:CF:6D:6C:80\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc42011a5d0 0xc42011a600 0xc42011a630]}}","t":"2018-01-15T19:15:10.738134375-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:15:10.738401114-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:15:10.738518574-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:15:10.73862678-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:15:10.745773779-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:15:10.746158054-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:15:10.746894216-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 59409 typ host tcptype passive generation 0 ufrag aYoD network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:15:10.747431602-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:15:10.748760963-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:15:10.749863303-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:15:10.749968201-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:15:10.750882407-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 46395 typ host generation 0 ufrag wAis network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:10.751576087-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 46395 typ srflx raddr 192.168.1.155 rport 46395 generation 0 ufrag wAis network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:10.774245148-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 37943 typ host tcptype passive generation 0 ufrag wAis network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:10.852098378-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:15:10.852994007-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:15:10.853085817-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:15:10.855093029-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:15:10.856463304-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:15:10.856602816-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:15:10.860239317-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:15:10.860351915-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:15:10.861513917-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:15:10.861692958-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:15:10.978446831-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072510980654257,"t":"2018-01-15T19:15:10.980656609-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:10.980971532-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:10.981039589-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072510981656474,"t":"2018-01-15T19:15:10.981660805-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072510982660423,"t":"2018-01-15T19:15:10.982661857-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:10.98290068-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:10.983673752-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072510984140308,"t":"2018-01-15T19:15:10.984142787-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:15:11.01250048-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:11.013019189-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072511013397643,"t":"2018-01-15T19:15:11.013399783-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072511032635983,"t":"2018-01-15T19:15:11.03263724-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:11.032859614-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072511047968529,"t":"2018-01-15T19:15:11.047970098-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:11.048101671-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:11.10796372-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072511108308651,"t":"2018-01-15T19:15:11.108309831-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:15:57.732801947-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:15:57.732966856-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:15:57.733030919-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:15:57.73818288-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:15:57.738477043-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 40822 typ host generation 0 ufrag omCK network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:57.738777187-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 40822 typ srflx raddr 192.168.1.155 rport 40822 generation 0 ufrag omCK network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:57.803779104-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:57.840075084-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:15:57.890243072-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:15:57.89042055-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 6175511035075152635 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:omCK\\r\\na=ice-pwd:KD6n/03nInT/373m0B1UW+6Q\\r\\na=fingerprint:sha-256 0F:17:AA:D8:8D:F6:0D:6C:3C:33:69:2D:44:A1:75:4B:E2:AC:B9:19:EB:EA:03:FE:7B:9C:FE:92:B2:A7:6A:EE\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:15:57.89193816-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 6175511035075152635 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:omCK\r\na=ice-pwd:KD6n/03nInT/373m0B1UW+6Q\r\na=fingerprint:sha-256 0F:17:AA:D8:8D:F6:0D:6C:3C:33:69:2D:44:A1:75:4B:E2:AC:B9:19:EB:EA:03:FE:7B:9C:FE:92:B2:A7:6A:EE\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc42014a390 0xc42014a3c0 0xc42014a3f0]}}","t":"2018-01-15T19:15:57.892345987-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:15:57.892602136-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:15:57.892693813-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:15:57.892767896-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:15:57.900137279-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:15:57.900668501-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:15:57.901242404-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 36251 typ host tcptype passive generation 0 ufrag omCK network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:15:57.901901532-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:15:57.903310013-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:15:57.904510748-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:15:57.904650097-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:15:57.905219251-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 52719 typ host generation 0 ufrag AeNu network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:57.905932576-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 52719 typ srflx raddr 192.168.1.155 rport 52719 generation 0 ufrag AeNu network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:57.928758813-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 60115 typ host tcptype passive generation 0 ufrag AeNu network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:15:58.007099526-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:15:58.008029847-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:15:58.008148726-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:15:58.010318945-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:15:58.01186987-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:15:58.012046579-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:15:58.016508705-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:15:58.016643568-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:15:58.018334666-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:15:58.01854452-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:15:58.133317466-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072558135809612,"t":"2018-01-15T19:15:58.135811802-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:58.136103546-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:58.136519582-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072558137044065,"t":"2018-01-15T19:15:58.137047115-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072558138016875,"t":"2018-01-15T19:15:58.13801966-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:58.138237081-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:58.138391984-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072558140142161,"t":"2018-01-15T19:15:58.14014502-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072558140178207,"t":"2018-01-15T19:15:58.14018026-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:58.142788288-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:58.148955315-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:15:58.159532746-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072558164319461,"t":"2018-01-15T19:15:58.164323537-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:15:58.165836122-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072558167223855,"t":"2018-01-15T19:15:58.167227325-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072558189056557,"t":"2018-01-15T19:15:58.189057813-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:15:58.189165228-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:17:41.890598253-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:17:41.890824239-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:17:41.890656494-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:17:41.895769614-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:17:41.896046657-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 47208 typ host generation 0 ufrag oi1S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:41.896434587-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 47208 typ srflx raddr 192.168.1.155 rport 47208 generation 0 ufrag oi1S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:41.937381884-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:41.996787364-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:17:42.04692314-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:17:42.047035924-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 1642851388673904353 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:oi1S\\r\\na=ice-pwd:ZrZWx2yRTrjwQ9gZ6UViQK9Q\\r\\na=fingerprint:sha-256 82:57:80:39:86:8B:45:22:80:56:24:3D:F0:15:31:CF:87:93:EC:6D:D2:21:98:DA:46:20:BB:3C:57:A8:E4:0F\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:17:42.048182346-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 1642851388673904353 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:oi1S\r\na=ice-pwd:ZrZWx2yRTrjwQ9gZ6UViQK9Q\r\na=fingerprint:sha-256 82:57:80:39:86:8B:45:22:80:56:24:3D:F0:15:31:CF:87:93:EC:6D:D2:21:98:DA:46:20:BB:3C:57:A8:E4:0F\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc42014e390 0xc42014e3c0 0xc42014e3f0]}}","t":"2018-01-15T19:17:42.048492741-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:17:42.048732999-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:17:42.048819924-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:17:42.048898949-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:17:42.054679149-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:17:42.055029548-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:17:42.055437413-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 51049 typ host tcptype passive generation 0 ufrag oi1S network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:17:42.055822286-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:17:42.056763113-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:17:42.057458166-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:17:42.057518859-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:17:42.058037621-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 48522 typ host generation 0 ufrag Lcs/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:42.058609314-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 48522 typ srflx raddr 192.168.1.155 rport 48522 generation 0 ufrag Lcs/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:42.081705569-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 49145 typ host tcptype passive generation 0 ufrag Lcs/ network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:42.160121466-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:17:42.161074482-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:17:42.161190699-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:17:42.163381397-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:17:42.164874225-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:17:42.165004366-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:17:42.169171064-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:17:42.169317286-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:17:42.17018008-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:17:42.1703844-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:17:42.291413389-08:00"}
+{"i":3,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:42.291693598-08:00"}
+{"i":1,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:42.291986382-08:00"}
+{"i":0,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:42.291708277-08:00"}
+{"i":2,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:42.29205614-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072662293798735,"t":"2018-01-15T19:17:42.293800925-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:42.294044436-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:42.294255318-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072662294813763,"t":"2018-01-15T19:17:42.294816958-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072662295487262,"t":"2018-01-15T19:17:42.295489472-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:42.295903103-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:42.301719525-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072662302498476,"t":"2018-01-15T19:17:42.302501085-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:42.302928345-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072662303804607,"t":"2018-01-15T19:17:42.303808985-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:42.314406379-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:17:42.314862679-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072662322098327,"t":"2018-01-15T19:17:42.322101037-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:42.322314486-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:42.326155117-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072662326761756,"t":"2018-01-15T19:17:42.326764274-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072662327906978,"t":"2018-01-15T19:17:42.327910358-08:00"}
+{"i":3,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:42.968180871-08:00"}
+{"i":1,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:43.063312825-08:00"}
+{"i":0,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:43.103570988-08:00"}
+{"i":2,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:43.117864638-08:00"}
+{"lvl":"info","msg":"Starting simple exit node...","t":"2018-01-15T19:17:57.556767504-08:00"}
+{"lvl":"info","msg":"Exit ready...","t":"2018-01-15T19:17:57.556979731-08:00"}
+{"lvl":"info","msg":"Starting simple source node...","t":"2018-01-15T19:17:57.556822663-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"HaveLocalOffer","t":"2018-01-15T19:17:57.562174787-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Gathering","t":"2018-01-15T19:17:57.562456786-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 34702 typ host generation 0 ufrag +8NP network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:57.562733895-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 34702 typ srflx raddr 192.168.1.155 rport 34702 generation 0 ufrag +8NP network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:57.585843307-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:57.66390569-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange ","state":"Complete","t":"2018-01-15T19:17:57.714179935-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:17:57.714311174-08:00"}
+{"body":"{\"offer\":{\"description\":{\"type\":\"offer\",\"sdp\":\"v=0\\r\\no=- 3994533399474985185 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\na=group:BUNDLE data\\r\\na=msid-semantic: WMS\\r\\nm=application 9 DTLS/SCTP 5000\\r\\nc=IN IP4 0.0.0.0\\r\\na=ice-ufrag:+8NP\\r\\na=ice-pwd:3qpgBDJJnB4VwCZQ76+tk46m\\r\\na=fingerprint:sha-256 E2:2B:DB:D0:3B:96:AF:CB:A9:0F:96:E1:55:6A:59:22:38:C1:99:B9:DC:58:1A:10:0F:BA:5C:81:83:C5:35:2F\\r\\na=setup:actpass\\r\\na=mid:data\\r\\na=sctpmap:5000 webrtc-datachannel 1024\\r\\n\"},\"Candidates\":[{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0},{\"candidate\":\"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50\",\"sdpMid\":\"data\",\"sdpMLineIndex\":0}]}}","lvl":"dbug","msg":"HTTP REQ","t":"2018-01-15T19:17:57.716136242-08:00"}
+{"lvl":"dbug","msg":"offer","struct":"\u0026{Inner:{Description:{Type:offer Sdp:v=0\r\no=- 3994533399474985185 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE data\r\na=msid-semantic: WMS\r\nm=application 9 DTLS/SCTP 5000\r\nc=IN IP4 0.0.0.0\r\na=ice-ufrag:+8NP\r\na=ice-pwd:3qpgBDJJnB4VwCZQ76+tk46m\r\na=fingerprint:sha-256 E2:2B:DB:D0:3B:96:AF:CB:A9:0F:96:E1:55:6A:59:22:38:C1:99:B9:DC:58:1A:10:0F:BA:5C:81:83:C5:35:2F\r\na=setup:actpass\r\na=mid:data\r\na=sctpmap:5000 webrtc-datachannel 1024\r\n} Candidates:[0xc42014e390 0xc42014e3c0 0xc42014e3f0]}}","t":"2018-01-15T19:17:57.716570285-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50","index":0,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:17:57.716810242-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50","index":1,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:17:57.716898305-08:00"}
+{"SdpMLineIndex":0,"candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50","index":2,"lvl":"dbug","msg":"RECEIVED ICE","sdpMid":"data","t":"2018-01-15T19:17:57.716971698-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"HaveRemoteOffer","t":"2018-01-15T19:17:57.724121698-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:17:57.724506467-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:17:57.72515875-08:00"}
+{"adding":"\u0026{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","c.candidate":"candidate:35179498 1 tcp 1518280447 192.168.1.155 54153 typ host tcptype passive generation 0 ufrag +8NP network-id 3 network-cost 50","lvl":"dbug","msg":"ICE","t":"2018-01-15T19:17:57.72567487-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange: ","state":"Stable","t":"2018-01-15T19:17:57.726900623-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:17:57.727703995-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:17:57.72779594-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:17:57.728413645-08:00"}
+{"cand":"{Candidate:candidate:1285240602 1 udp 2122260223 192.168.1.155 42962 typ host generation 0 ufrag QzLz network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:57.729358664-08:00"}
+{"cand":"{Candidate:candidate:3453170094 1 udp 1686052607 68.129.186.132 42962 typ srflx raddr 192.168.1.155 rport 42962 generation 0 ufrag QzLz network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:57.751968668-08:00"}
+{"cand":"{Candidate:candidate:35179498 1 tcp 1518280447 192.168.1.155 54627 typ host tcptype passive generation 0 ufrag QzLz network-id 3 network-cost 50 SdpMid:data SdpMLineIndex:0}","lvl":"dbug","msg":"OnIceCandidate: ","t":"2018-01-15T19:17:57.830130137-08:00"}
+{"lvl":"dbug","msg":"OnIceGatheringStateChange: ","t":"2018-01-15T19:17:57.831008362-08:00"}
+{"lvl":"dbug","msg":"OnIceComplete: ","t":"2018-01-15T19:17:57.831116835-08:00"}
+{"lvl":"dbug","msg":"OnSignalingStateChange ","state":"Stable","t":"2018-01-15T19:17:57.833204613-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Checking","t":"2018-01-15T19:17:57.834603091-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connecting","t":"2018-01-15T19:17:57.834742185-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange: ","t":"2018-01-15T19:17:57.838644341-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange: ","t":"2018-01-15T19:17:57.838745302-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Connected","t":"2018-01-15T19:17:57.839452277-08:00"}
+{"lvl":"dbug","msg":"OnConnectionStateChange ","state":"Connected","t":"2018-01-15T19:17:57.839636068-08:00"}
+{"lvl":"dbug","msg":"Node Test after node setup","t":"2018-01-15T19:17:57.957227338-08:00"}
+{"i":3,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:57.957593331-08:00"}
+{"i":2,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:57.958285814-08:00"}
+{"i":0,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:57.957601824-08:00"}
+{"i":1,"lvl":"dbug","msg":"TEST FUNC A","t":"2018-01-15T19:17:57.957680126-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072677959687775,"t":"2018-01-15T19:17:57.959689827-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:57.959904404-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:57.960078005-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072677960540576,"t":"2018-01-15T19:17:57.960543163-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072677961405386,"t":"2018-01-15T19:17:57.961407075-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:57.961903805-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:57.965976566-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072677966669900,"t":"2018-01-15T19:17:57.966673498-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:57.978759446-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072677979632683,"t":"2018-01-15T19:17:57.979636506-08:00"}
+{"lvl":"dbug","msg":"OnIceConnectionStateChange ","state":"Completed","t":"2018-01-15T19:17:57.980453422-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072677988318648,"t":"2018-01-15T19:17:57.988321489-08:00"}
+{"err":"\u003cnil\u003e","lvl":"dbug","msg":"(source) wPeer.NewDataChannel","ns":1516072677989892438,"t":"2018-01-15T19:17:57.989894772-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:57.990111784-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"OnDataChannel","t":"2018-01-15T19:17:57.991071739-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T19:17:57.991587564-08:00"}
+{"ReadyState":"Open","lvl":"dbug","msg":"(exit) DC.OnOpen","ns":1516072677992009938,"t":"2018-01-15T19:17:57.992032382-08:00"}
+{"i":3,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:58.667793295-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.72808399-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":140,"t":"2018-01-15T19:17:58.764872446-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.780483888-08:00"}
+{"i":2,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:58.800284191-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.822127759-08:00"}
+{"ID":3,"label":"1","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.842271885-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":140,"t":"2018-01-15T19:17:58.842422124-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.858198855-08:00"}
+{"err":"read tcp 127.0.0.1:55466-\u003e127.0.0.1:3202: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":140,"t":"2018-01-15T19:17:58.865554697-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.86568817-08:00"}
+{"i":1,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:58.907804862-08:00"}
+{"ID":5,"label":"2","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.922455129-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.942489543-08:00"}
+{"err":"read tcp 127.0.0.1:55468-\u003e127.0.0.1:3202: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":140,"t":"2018-01-15T19:17:58.942812537-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.956899472-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":140,"t":"2018-01-15T19:17:58.957017617-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.977589444-08:00"}
+{"i":0,"lvl":"dbug","msg":"TEST FUNC B","t":"2018-01-15T19:17:58.978047277-08:00"}
+{"ID":9,"label":"4","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.97831324-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":140,"t":"2018-01-15T19:17:58.978342089-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.978316675-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.978476896-08:00"}
+{"err":"read tcp 127.0.0.1:55472-\u003e127.0.0.1:3202: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":140,"t":"2018-01-15T19:17:58.978551123-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.978690653-08:00"}
+{"ID":7,"label":"3","lvl":"dbug","msg":"NewDCReadWriteCloser dc.OnClose","t":"2018-01-15T19:17:58.978841092-08:00"}
+{"lvl":"dbug","msg":"io.CopyBuffer closed with no error","streamed":131,"t":"2018-01-15T19:17:58.978935156-08:00"}
+{"err":"read tcp 127.0.0.1:55470-\u003e127.0.0.1:3202: use of closed network connection","lvl":"info","msg":"io.CopyBuffer","streamed":140,"t":"2018-01-15T19:17:58.979005112-08:00"}

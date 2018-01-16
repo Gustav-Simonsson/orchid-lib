@@ -1,0 +1,4 @@
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T18:04:35.443040513-08:00"}
+{"err":"read tcp 127.0.0.1:8080-\u003e127.0.0.1:38460: read: connection reset by peer","lvl":"info","msg":"io.CopyBuffer","streamed":2,"t":"2018-01-15T18:04:35.443402064-08:00"}
+{"lvl":"dbug","msg":"ServeConn (source)","t":"2018-01-15T18:12:11.954175812-08:00"}
+{"err":"read tcp 127.0.0.1:8080-\u003e127.0.0.1:38622: read: connection reset by peer","lvl":"info","msg":"io.CopyBuffer","streamed":2,"t":"2018-01-15T18:12:11.954479376-08:00"}

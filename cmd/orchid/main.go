@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/Gustav-Simonsson/orchid-lib/node"
 	"github.com/ethereum/go-ethereum/log"
 	homedir "github.com/mitchellh/go-homedir"
 )
@@ -41,9 +42,9 @@ func main() {
 
 	var err error
 	if os.Args[1] == "source" {
-		err = simpleSource()
+		err = node.SimpleSource()
 	} else {
-		err = simpleExit()
+		err = node.SimpleExit()
 	}
 	if err != nil {
 		log.Error("node exit:", "source", os.Args[1] == "source", "err", err)
