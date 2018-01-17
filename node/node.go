@@ -1,4 +1,4 @@
-/*  orchid-lib - golang packages for the Orchid protocol.
+/*  orchid-lib  golang packages for the Orchid protocol.
     Copyright (C) 2018  Gustav Simonsson
 
     This file is part of orchid-lib.
@@ -69,15 +69,16 @@ func SimpleSource() error {
 		return err
 	}
 
+	//go proxy.ListenAndServe()
 	proxy.ListenAndServe()
 
-	//time.Sleep(100 * time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
 	/*
 		home, err := homedir.Dir()
 		if err != nil {
 			panic(err)
 		}
-		orchidDir = filepath.Join(home, ".orchid")
+		orchidDir := filepath.Join(home, ".orchid")
 		userChromeDir := filepath.Join(orchidDir, ".chrome")
 		err = os.MkdirAll(userChromeDir, 0700)
 		if err != nil {

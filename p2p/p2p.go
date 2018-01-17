@@ -1,4 +1,4 @@
-/*  orchid-lib - golang packages for the Orchid protocol.
+/*  orchid-lib  golang packages for the Orchid protocol.
     Copyright (C) 2018  Gustav Simonsson
 
     This file is part of orchid-lib.
@@ -24,5 +24,5 @@ const (
 	// On source nodes this is probably fine, on relays and exits
 	// (especially if embedded devices) this can be important to tune
 	// Used by TCPProxy and DCReadWriteCloser
-	transferBufSize = 30 * 1024
+	transferBufSize = 64 * 1024
 )

@@ -1,4 +1,4 @@
-/*  orchid-lib - golang packages for the Orchid protocol.
+/*  orchid-lib  golang packages for the Orchid protocol.
     Copyright (C) 2018  Gustav Simonsson
 
     This file is part of orchid-lib.
@@ -373,45 +373,60 @@ func NewExit(b []byte, dcReady chan *DCReadWriteCloser) ([]byte, *WebRTCPeer, er
    with the TCPProxy
 */
 type DCReadWriteCloser struct {
-	mutex  sync.Mutex
-	dc     *webrtc.DataChannel
-	buf    *bytes.Buffer
-	closed bool
+	dc       *webrtc.DataChannel
+	readPing chan struct{}
+	mutex    sync.Mutex // over readBuf and closed
+	readBuf  *bytes.Buffer
+	closed   bool
 }
 
 func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
 	d := &DCReadWriteCloser{
-		sync.Mutex{},
 		dc,
+		make(chan struct{}),
+		sync.Mutex{},
 		bytes.NewBuffer(make([]byte, 0, transferBufSize)),
 		false,
 	}
 
 	dc.OnMessage = func(msg []byte) {
 		d.mutex.Lock()
-		_, err := d.buf.Write(msg)
+		_, err := d.readBuf.Write(msg)
+		d.mutex.Unlock()
 		if err != nil {
 			log.Error("dc.OnMessage buf.Write", "err", err)
+			return
 		}
-		//log.Debug("dc.OnMessage ", "msg", msg)
-		d.mutex.Unlock()
+		select {
+		case d.readPing <- struct{}{}:
+		default:
+		}
 	}
 	dc.OnClose = func() {
 		d.mutex.Lock()
 		d.closed = true
-		log.Debug("NewDCReadWriteCloser dc.OnClose", "label", dc.Label(), "ID", dc.ID())
 		d.mutex.Unlock()
+		log.Debug("NewDCReadWriteCloser dc.OnClose", "label", dc.Label(), "ID", dc.ID())
 	}
 	return d
 }
 
 func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
-	defer d.mutex.Unlock()
 	d.mutex.Lock()
 	if d.closed {
 		return 0, io.EOF
 	}
-	nr, err := d.buf.Read(p)
+
+	if d.readBuf.Len() == 0 {
+		//log.Debug("DCReadWriteCloser Read blocking on d.readPing")
+		// TODO: refactor
+		d.mutex.Unlock()
+		<-d.readPing
+		d.mutex.Lock()
+	}
+
+	nr, err := d.readBuf.Read(p)
+	d.mutex.Unlock()
 	//log.Debug("DCReadWriteCloser Read", "n", nr, "err", err)
 	if err == io.EOF {
 		return nr, nil
@@ -421,10 +436,8 @@ func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
 }
 
 func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
-	//log.Debug("DCReadWriteCloser Write", "p", p)
 	defer d.mutex.Unlock()
 	d.mutex.Lock()
-
 	if d.closed {
 		return 0, io.ErrClosedPipe
 	}
@@ -439,16 +452,11 @@ func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
 
 func (d *DCReadWriteCloser) Close() (err error) {
 	d.mutex.Lock()
-	if d.closed {
-		return nil
-	}
 	d.closed = true
-
-	// we unlock before call to dc.Close since the DataChannel OnClose callback
-	// also locks d, and is both triggered sync from the below call to
-	// dc.Close as well as potentially async for other reasons
-	// (e.g. underlying transport err concurrent to this closing).
-	// since we return if d.closed this should be OK.
+	select {
+	case d.readPing <- struct{}{}:
+	default:
+	}
 	d.mutex.Unlock()
 
 	// closes DataChannel, triggers OnClosed callback

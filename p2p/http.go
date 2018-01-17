@@ -1,4 +1,4 @@
-/*  orchid-lib - golang packages for the Orchid protocol.
+/*  orchid-lib  golang packages for the Orchid protocol.
     Copyright (C) 2018  Gustav Simonsson
 
     This file is part of orchid-lib.
