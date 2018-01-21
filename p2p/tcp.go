@@ -91,7 +91,7 @@ func (ts *TCPProxy) ListenAndServe() error {
 			return err
 		}
 		go func(c net.Conn, d io.ReadWriteCloser) {
-			log.Debug("ServeConn (source)")
+			log.Debug("[source] ServeConn")
 			ServeConn(c, d)
 		}(conn, dst)
 	}
@@ -146,6 +146,6 @@ func copyBuffer(dst io.Writer, src io.Reader, buf []byte, done chan struct{}) {
 	} else if err == io.EOF {
 		log.Debug("io.CopyBuffer closed with EOF", "streamed", n)
 	} else { // TODO: handle other specific io errors
-		log.Info("io.CopyBuffer", "streamed", n, "err", err)
+		log.Error("io.CopyBuffer", "streamed", n, "err", err)
 	}
 }

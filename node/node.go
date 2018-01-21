@@ -54,14 +54,14 @@ func SimpleSource() error {
 	proxy, err := p2p.NewTCPProxy(SourceTCPPort,
 		func() (io.ReadWriteCloser, error) {
 			dc, err := wPeer.NewDataChannel()
-			log.Debug("(source) wPeer.NewDataChannel", "err", err, "ns", time.Now().UnixNano())
+			log.Debug("[source] wPeer.NewDataChannel", "err", err, "ns", time.Now().UnixNano())
 			if err != nil {
-				log.Error("CreateDataChannel (TCP proxy callback)", "err", err)
+				log.Error("[source] CreateDataChannel (TCP proxy callback)", "err", err)
 				return nil, err
 			}
 
 			//time.Sleep(time.Millisecond * 200)
-			dcRWC := p2p.NewDCReadWriteCloser(dc)
+			dcRWC := p2p.NewDCReadWriteCloser(dc, "src")
 			return dcRWC, nil
 		})
 	if err != nil {

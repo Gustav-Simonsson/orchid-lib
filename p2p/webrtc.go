@@ -29,7 +29,6 @@ import (
 	"net/url"
 	"strconv"
 	"sync"
-	"time"
 
 	webrtc "github.com/Gustav-Simonsson/go-webrtc"
 	"github.com/ethereum/go-ethereum/log"
@@ -265,14 +264,9 @@ func NewExit(b []byte, dcReady chan *DCReadWriteCloser) ([]byte, *WebRTCPeer, er
 		if d.Label() == "0" {
 			return
 		}
-
 		d.OnOpen = func() {
-			log.Debug("(exit) DC.OnOpen", "ReadyState", d.ReadyState(), "ns", time.Now().UnixNano())
-			dcReady <- NewDCReadWriteCloser(d)
+			dcReady <- NewDCReadWriteCloser(d, "exit")
 		}
-
-		log.Debug("OnDataChannel", "label", d.Label(), "ID", d.ID())
-		//log.Info("pc.OnDataChannel", "ns", time.Now().UnixNano())
 	}
 
 	// Listen to our own candidates
@@ -370,64 +364,75 @@ func NewExit(b []byte, dcReady chan *DCReadWriteCloser) ([]byte, *WebRTCPeer, er
 /* DCReadWriteCloser wraps webrtc.DataChannel with a mutex for
    concurrent access and a byte buffer and closed flag to implement
    the io.ReadWriterCloser interface as a more generic way of interfacing
-   with the TCPProxy
+   with the TCPProxy or other Reader / Writer interfaces
 */
 type DCReadWriteCloser struct {
-	dc       *webrtc.DataChannel
+	debug string
+
+	stateMutex sync.Mutex // over readBuf and closed
+	readBuf    *bytes.Buffer
+	closed     bool
+
+	writeMutex sync.Mutex // over dc.Send
+	dc         *webrtc.DataChannel
+
 	readPing chan struct{}
-	mutex    sync.Mutex // over readBuf and closed
-	readBuf  *bytes.Buffer
-	closed   bool
 }
 
-func NewDCReadWriteCloser(dc *webrtc.DataChannel) *DCReadWriteCloser {
+func NewDCReadWriteCloser(dc *webrtc.DataChannel, dbg string) *DCReadWriteCloser {
 	d := &DCReadWriteCloser{
-		dc,
-		make(chan struct{}),
+		dbg,
+
 		sync.Mutex{},
 		bytes.NewBuffer(make([]byte, 0, transferBufSize)),
 		false,
+
+		sync.Mutex{},
+		dc,
+		make(chan struct{}),
 	}
 
+	//label := d.dc.Label()
+
 	dc.OnMessage = func(msg []byte) {
-		d.mutex.Lock()
+		d.stateMutex.Lock()
 		_, err := d.readBuf.Write(msg)
-		d.mutex.Unlock()
+		d.stateMutex.Unlock()
+
 		if err != nil {
-			log.Error("dc.OnMessage buf.Write", "err", err)
 			return
 		}
+
 		select {
 		case d.readPing <- struct{}{}:
 		default:
 		}
 	}
 	dc.OnClose = func() {
-		d.mutex.Lock()
+		d.stateMutex.Lock()
 		d.closed = true
-		d.mutex.Unlock()
-		log.Debug("NewDCReadWriteCloser dc.OnClose", "label", dc.Label(), "ID", dc.ID())
+		d.stateMutex.Unlock()
 	}
 	return d
 }
 
 func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
-	d.mutex.Lock()
+	//label := d.dc.Label()
+	d.stateMutex.Lock()
 	if d.closed {
+		d.stateMutex.Unlock()
 		return 0, io.EOF
 	}
 
 	if d.readBuf.Len() == 0 {
-		//log.Debug("DCReadWriteCloser Read blocking on d.readPing")
 		// TODO: refactor
-		d.mutex.Unlock()
+		d.stateMutex.Unlock()
 		<-d.readPing
-		d.mutex.Lock()
+		d.stateMutex.Lock()
 	}
 
 	nr, err := d.readBuf.Read(p)
-	d.mutex.Unlock()
-	//log.Debug("DCReadWriteCloser Read", "n", nr, "err", err)
+	d.stateMutex.Unlock()
 	if err == io.EOF {
 		return nr, nil
 	} else {
@@ -436,8 +441,11 @@ func (d *DCReadWriteCloser) Read(p []byte) (n int, err error) {
 }
 
 func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
-	defer d.mutex.Unlock()
-	d.mutex.Lock()
+	//label := d.dc.Label()
+
+	defer d.writeMutex.Unlock()
+	d.writeMutex.Lock()
+
 	if d.closed {
 		return 0, io.ErrClosedPipe
 	}
@@ -451,13 +459,15 @@ func (d *DCReadWriteCloser) Write(p []byte) (n int, err error) {
 }
 
 func (d *DCReadWriteCloser) Close() (err error) {
-	d.mutex.Lock()
+	//label := d.dc.Label()
+
+	d.stateMutex.Lock()
 	d.closed = true
 	select {
 	case d.readPing <- struct{}{}:
 	default:
 	}
-	d.mutex.Unlock()
+	d.stateMutex.Unlock()
 
 	// closes DataChannel, triggers OnClosed callback
 	err = d.dc.Close()

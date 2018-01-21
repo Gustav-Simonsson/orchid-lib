@@ -17,7 +17,35 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-package test
+package main
 
-func DummyCompile() {
+import (
+	"os"
+
+	"github.com/Gustav-Simonsson/orchid-lib/p2p"
+	"github.com/ethereum/go-ethereum/log"
+)
+
+func init() {
+	log.Root().SetHandler(log.MultiHandler(
+		log.StreamHandler(os.Stderr, log.TerminalFormat(true)),
+		log.LvlFilterHandler(
+			log.LvlDebug,
+			log.Must.FileHandler("sockstest_errors.json", log.JsonFormat()))))
+
+}
+
+func main() {
+	sp, err := p2p.NewSOCKSProxy()
+	if err != nil {
+		os.Exit(1)
+	}
+
+	err = sp.ListenAndServe(3206)
+	if err != nil {
+		os.Exit(1)
+	} else {
+		os.Exit(0)
+	}
+
 }
