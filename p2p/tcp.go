@@ -91,7 +91,6 @@ func (ts *TCPProxy) ListenAndServe() error {
 			return err
 		}
 		go func(c net.Conn, d io.ReadWriteCloser) {
-			log.Debug("[source] ServeConn")
 			ServeConn(c, d)
 		}(conn, dst)
 	}
